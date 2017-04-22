@@ -1,5 +1,7 @@
 package com.bycode.flario;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,16 +16,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.bycode.flario.Presenters.WebsitesPresenter;
 import com.bycode.flario.fragments.AddWebsiteDialogFragment;
 import com.bycode.flario.fragments.WebsitesFragment;
 import com.bycode.flario.listAdapters.WebsitesAdapter;
 import com.bycode.flario.models.localDatabase.Website;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements
             NavigationView.OnNavigationItemSelectedListener,
             WebsitesFragment.OnFragmentInteractionListener,
-            AddWebsiteDialogFragment.OnFragmentInteractionListener {
+            AddWebsiteDialogFragment.OnFragmentInteractionListener,
+        WebsitesPresenter.WebsitesPresenterListener{
 
     private WebsitesAdapter adapter = new WebsitesAdapter();
 
@@ -35,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        WebsitesPresenter websitesPresenter = new WebsitesPresenter(this, this);
+        websitesPresenter.getWebsites();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -115,7 +123,29 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void sendModal(int title_id, int text_id) {
+        new AlertDialog.Builder(this)
+                .setTitle(title_id)
+                .setMessage(text_id)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+
+    @Override
     public WebsitesAdapter getWebsiteAdapter() {
         return adapter;
+    }
+
+    @Override
+    public void websitesReady(ArrayList<Website> websites) {
+        for (Website website : websites) {
+            adapter.addWebsite(website);
+        }
     }
 }

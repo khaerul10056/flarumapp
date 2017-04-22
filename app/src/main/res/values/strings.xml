@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Flarum</string>
+    <string name="app_name">Flario</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,4 +10,11 @@
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
     <string name="http_help">forum address</string>
+
+    <string name="login">Login</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Edit</string>
+
+    <string name="error">Error</string>
+    <string name="website_not_exists">Website based on flarum propably doesn\'t exists :/</string>
 </resources>

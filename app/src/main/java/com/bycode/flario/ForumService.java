@@ -1,6 +1,7 @@
 package com.bycode.flario;
 
 import com.bycode.flario.models.DiscussionsResponse;
+import com.bycode.flario.models.WebsiteInfoResponse;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -15,6 +16,9 @@ public class ForumService {
     public interface ForumAPI {
         @GET("api/discussions")
         Call<DiscussionsResponse> getlistDiscussions();
+
+        @GET("api/forum")
+        Call<WebsiteInfoResponse> getWebsiteInformations();
     }
 
     public ForumAPI getAPI(String BASE_URL){

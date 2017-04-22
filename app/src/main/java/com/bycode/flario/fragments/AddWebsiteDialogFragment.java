@@ -15,8 +15,13 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.bycode.flario.Presenters.WebsiteInfoPresenter;
+import com.bycode.flario.Presenters.WebsitesPresenter;
 import com.bycode.flario.R;
 import com.bycode.flario.listAdapters.WebsitesAdapter;
+import com.bycode.flario.models.WebsiteInfo;
+import com.bycode.flario.models.WebsiteInfoAttributes;
+import com.bycode.flario.models.WebsiteInfoResponse;
 import com.bycode.flario.models.localDatabase.Website;
 import com.bycode.flario.utils.URLValidator;
 
@@ -24,9 +29,10 @@ import com.bycode.flario.utils.URLValidator;
  * Created by michal on 22.04.2017.
  */
 
-public class AddWebsiteDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
+public class AddWebsiteDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener, WebsiteInfoPresenter.WebsiteInfoPresenterListener {
     private String http = "http://";
-    private WebsitesFragment.OnFragmentInteractionListener mListener;
+    private AddWebsiteDialogFragment.OnFragmentInteractionListener mListener;
+    private String fullUrl;
 
     public AddWebsiteDialogFragment() {
 
@@ -45,6 +51,8 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_website_dialog, null);
+
+        final WebsiteInfoPresenter websiteInfoPresenter = new WebsiteInfoPresenter(this, getActivity());
 
         // Get the layout inflater
         Spinner spinner = (Spinner) view.findViewById(R.id.http_spinner);
@@ -65,13 +73,9 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
                         String full_url = http+address.getText().toString();
 
                         URLValidator urlValidator = new URLValidator();
-                        full_url = urlValidator.getValidURL(full_url);
+                        fullUrl = urlValidator.getValidURL(full_url);
 
-                        Website website = new Website();
-                        website.setAddress(full_url);
-                        website.save();
-
-                        mListener.addWebsite(website);
+                        websiteInfoPresenter.getWebsiteInfo(fullUrl);
 
 
                     }
@@ -108,7 +112,7 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof WebsitesFragment.OnFragmentInteractionListener) {
-            mListener = (WebsitesFragment.OnFragmentInteractionListener) context;
+            mListener = (AddWebsiteDialogFragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -118,12 +122,33 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void websiteInfoReady(WebsiteInfoResponse websiteInfoResponse) {
+        WebsiteInfo websiteInfo = websiteInfoResponse.getData();
+        WebsiteInfoAttributes websiteInfoAttributes = websiteInfo.getAttributes();
+
+        Website website = new Website();
+        website.setAddress(fullUrl);
+        website.setTitle(websiteInfoAttributes.getTitle());
+        website.save();
+
+        mListener.addWebsite(website);
+
+
+    }
+
+    @Override
+    public void websiteInfoFailed(String error) {
+
+        mListener.sendModal(R.string.error, R.string.website_not_exists);
         mListener = null;
     }
 
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void addWebsite(Website website);
-        WebsitesAdapter getWebsiteAdapter();
+        void sendModal(int title_id, int text_id);
     }
 }

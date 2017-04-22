@@ -11,9 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bycode.flario.Presenters.WebsitesPresenter;
 import com.bycode.flario.R;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 
 
 
-public class WebsitesFragment extends Fragment implements WebsitesPresenter.WebsitesPresenterListener{
+public class WebsitesFragment extends Fragment {
     private WebsitesAdapter adapter;
     private OnFragmentInteractionListener mListener;
 
@@ -34,8 +36,6 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView(view);
 
-        WebsitesPresenter websitesPresenter = new WebsitesPresenter(this, getActivity());
-        websitesPresenter.getWebsites();
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.add_website_fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -65,13 +65,6 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
         items.setAdapter(adapter);
     }
 
-    @Override
-    public void websitesReady(ArrayList<Website> websites) {
-        for (Website website : websites) {
-            adapter.addWebsite(website);
-        }
-    }
-
 
     @Override
     public void onAttach(Context context) {
@@ -91,7 +84,6 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
     }
 
     public interface OnFragmentInteractionListener {
-        void addWebsite(Website website);
         WebsitesAdapter getWebsiteAdapter();
     }
 }

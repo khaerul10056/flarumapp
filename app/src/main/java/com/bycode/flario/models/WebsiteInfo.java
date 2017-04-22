@@ -1,5 +1,8 @@
 package com.bycode.flario.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +13,11 @@ import java.util.Map;
 public class WebsiteInfo {
     private String type;
     private String id;
+
+    @SerializedName("attributes")
+    @Expose
     private WebsiteInfoAttributes attributes;
+
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getType() {
