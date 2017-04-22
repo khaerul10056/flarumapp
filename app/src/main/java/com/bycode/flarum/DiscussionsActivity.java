@@ -1,17 +1,15 @@
 package com.bycode.flarum;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import com.bycode.flarum.Presenters.LatestDiscussionsPresenter;
 import com.bycode.flarum.listAdapters.DiscussionsAdapter;
-import com.bycode.flarum.models.Post;
-import com.bycode.flarum.models.Posts;
+import com.bycode.flarum.models.Discussion;
+import com.bycode.flarum.models.DiscussionsResponse;
 
 public class DiscussionsActivity extends AppCompatActivity implements LatestDiscussionsPresenter.LatestDiscussionsPresenterListener {
     private DiscussionsAdapter adapter;
@@ -32,10 +30,9 @@ public class DiscussionsActivity extends AppCompatActivity implements LatestDisc
     }
 
     @Override
-    public void latestDiscussionsReady(Posts posts) {
-        for (Post post : posts.getData()) {
-            Log.e("aa", post.getAttributes().toString());
-            adapter.addDiscussion(post.getAttributes());
+    public void latestDiscussionsReady(DiscussionsResponse discussionsResponse) {
+        for (Discussion discussion : discussionsResponse.getData()) {
+            adapter.addDiscussion(discussion.getDiscussionAttributes());
         }
     }
 

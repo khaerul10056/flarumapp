@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.bycode.flarum.DiscussionsActivity;
 import com.bycode.flarum.R;
-import com.bycode.flarum.models.Attributes;
-import com.bycode.flarum.models.Website;
+import com.bycode.flarum.models.localDatabase.Website;
 
 import java.util.ArrayList;
 

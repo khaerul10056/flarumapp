@@ -1,6 +1,6 @@
 package com.bycode.flarum;
 
-import com.bycode.flarum.models.Posts;
+import com.bycode.flarum.models.DiscussionsResponse;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -14,7 +14,7 @@ import retrofit2.http.GET;
 public class ForumService {
     public interface ForumAPI {
         @GET("api/discussions")
-        Call<Posts> getlistPosts();
+        Call<DiscussionsResponse> getlistDiscussions();
     }
 
     public ForumAPI getAPI(String BASE_URL){

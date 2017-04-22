@@ -3,14 +3,11 @@ package com.bycode.flarum.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by michal on 19.04.2017.
  */
 
-public class Post {
+public class Discussion {
 
     @SerializedName("type")
     @Expose
@@ -20,7 +17,7 @@ public class Post {
     private String id;
     @SerializedName("attributes")
     @Expose
-    private Attributes attributes;
+    private DiscussionAttributes discussionAttributes;
 
     public String getType() {
         return type;
@@ -38,12 +35,12 @@ public class Post {
         this.id = id;
     }
 
-    public Attributes getAttributes() {
-        return attributes;
+    public DiscussionAttributes getDiscussionAttributes() {
+        return discussionAttributes;
     }
 
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
+    public void setDiscussionAttributes(DiscussionAttributes discussionAttributes) {
+        this.discussionAttributes = discussionAttributes;
     }
 
 }

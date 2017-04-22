@@ -1,16 +1,13 @@
 package com.bycode.flarum.Presenters;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.bycode.flarum.ForumService;
-import com.bycode.flarum.models.Posts;
-import com.bycode.flarum.models.Website;
+import com.bycode.flarum.models.localDatabase.Website;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.List;
 
 /**
  * Created by michal on 20.04.2017.
@@ -34,14 +31,8 @@ public class WebsitesPresenter {
 
     public void getWebsites(){
         ArrayList <Website> websites = new ArrayList<>();
-        Website website = new Website();
-        website.setAddress("http://ubuntupolska.pl/ask/");
-
-        Website website2 = new Website();
-        website2.setAddress("https://discuss.flarum.org/");
-
-        websites.add(website);
-        websites.add(website2);
+        List<Website> websitesList = Website.listAll(Website.class);
+        websites.addAll(websitesList);
         mListener.websitesReady(websites);
     }
 }

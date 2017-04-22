@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by michal on 19.04.2017.
  */
 
-public class Attributes {
+public class DiscussionAttributes {
 
     @SerializedName("title")
     @Expose

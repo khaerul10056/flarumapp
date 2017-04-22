@@ -1,13 +1,14 @@
 package com.bycode.flarum.listAdapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bycode.flarum.R;
-import com.bycode.flarum.models.Attributes;
+import com.bycode.flarum.models.DiscussionAttributes;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.ViewHolder> {
-    private ArrayList<Attributes> discussions = new ArrayList<>();
+    private ArrayList<DiscussionAttributes> discussions = new ArrayList<>();
 
     public DiscussionsAdapter() {}
 
@@ -28,7 +29,6 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
 
     @Override
     public void onBindViewHolder(DiscussionsAdapter.ViewHolder viewHolder, int i) {
-
         viewHolder.tv_country.setText(discussions.get(i).getTitle());
     }
 
@@ -37,14 +37,14 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
         return discussions != null ? discussions.size() : 0;
     }
 
-    public void addDiscussion(Attributes attributes) {
-        discussions.add(attributes);
+    public void addDiscussion(DiscussionAttributes discussionAttributes) {
+        discussions.add(discussionAttributes);
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_country;
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
 
             tv_country = (TextView)view.findViewById(R.id.tv_country);

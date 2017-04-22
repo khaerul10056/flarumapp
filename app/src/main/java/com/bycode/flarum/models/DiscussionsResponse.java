@@ -3,7 +3,6 @@ package com.bycode.flarum.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +12,20 @@ import java.util.List;
 
 
 
-public class Posts {
+public class DiscussionsResponse {
 
     @SerializedName("data")
     @Expose
-    private ArrayList<Post> data;
+    private ArrayList<Discussion> data;
     @SerializedName("included")
     @Expose
     private List included = null;
 
-    public ArrayList<Post> getData() {
+    public ArrayList<Discussion> getData() {
         return data;
     }
 
-    public void setData(ArrayList<Post> data) {
+    public void setData(ArrayList<Discussion> data) {
         this.data = data;
     }
 
