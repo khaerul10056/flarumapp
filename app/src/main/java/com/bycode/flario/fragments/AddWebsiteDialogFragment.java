@@ -25,6 +25,8 @@ import com.bycode.flario.models.WebsiteInfoResponse;
 import com.bycode.flario.models.localDatabase.Website;
 import com.bycode.flario.utils.URLValidator;
 
+import java.util.List;
+
 /**
  * Created by michal on 22.04.2017.
  */
@@ -75,7 +77,11 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
                         URLValidator urlValidator = new URLValidator();
                         fullUrl = urlValidator.getValidURL(full_url);
 
-                        websiteInfoPresenter.getWebsiteInfo(fullUrl);
+                        List<Website> websitesLocale = Website.find(Website.class, "address = ?", fullUrl);
+
+                        if (websitesLocale.isEmpty()) {
+                            websiteInfoPresenter.getWebsiteInfo(fullUrl);
+                        }
 
 
                     }
