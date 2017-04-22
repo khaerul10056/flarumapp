@@ -1,4 +1,4 @@
-package com.bycode.flarum.models;
+package com.bycode.flario.models;
 
 import java.util.HashMap;
 import java.util.Map;

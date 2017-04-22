@@ -1,4 +1,4 @@
-package com.bycode.flarum;
+package com.bycode.flario;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

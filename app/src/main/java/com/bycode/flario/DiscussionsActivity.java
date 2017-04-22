@@ -1,15 +1,14 @@
-package com.bycode.flarum;
+package com.bycode.flario;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
-import com.bycode.flarum.Presenters.LatestDiscussionsPresenter;
-import com.bycode.flarum.listAdapters.DiscussionsAdapter;
-import com.bycode.flarum.models.Discussion;
-import com.bycode.flarum.models.DiscussionsResponse;
+import com.bycode.flario.Presenters.LatestDiscussionsPresenter;
+import com.bycode.flario.listAdapters.DiscussionsAdapter;
+import com.bycode.flario.models.Discussion;
+import com.bycode.flario.models.DiscussionsResponse;
 
 public class DiscussionsActivity extends AppCompatActivity implements LatestDiscussionsPresenter.LatestDiscussionsPresenterListener {
     private DiscussionsAdapter adapter;

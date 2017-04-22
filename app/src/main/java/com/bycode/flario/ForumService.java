@@ -1,6 +1,6 @@
-package com.bycode.flarum;
+package com.bycode.flario;
 
-import com.bycode.flarum.models.DiscussionsResponse;
+import com.bycode.flario.models.DiscussionsResponse;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

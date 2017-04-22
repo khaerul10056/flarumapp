@@ -1,4 +1,4 @@
-package com.bycode.flarum.listAdapters;
+package com.bycode.flario.listAdapters;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bycode.flarum.DiscussionsActivity;
-import com.bycode.flarum.R;
-import com.bycode.flarum.models.localDatabase.Website;
+import com.bycode.flario.DiscussionsActivity;
+import com.bycode.flario.R;
+import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
 

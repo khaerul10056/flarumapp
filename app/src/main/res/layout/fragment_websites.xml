@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.bycode.flarum.fragments.WebsitesFragment">
+    tools:context="com.bycode.flario.fragments.WebsitesFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/websites_recycler_view"

@@ -1,6 +1,8 @@
-package com.bycode.flarum.fragments;
+package com.bycode.flario.fragments;
 
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,10 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bycode.flarum.Presenters.WebsitesPresenter;
-import com.bycode.flarum.R;
-import com.bycode.flarum.listAdapters.WebsitesAdapter;
-import com.bycode.flarum.models.localDatabase.Website;
+import com.bycode.flario.Presenters.WebsitesPresenter;
+import com.bycode.flario.R;
+import com.bycode.flario.listAdapters.WebsitesAdapter;
+import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 
 public class WebsitesFragment extends Fragment implements WebsitesPresenter.WebsitesPresenterListener{
     private WebsitesAdapter adapter;
+    private OnFragmentInteractionListener mListener;
 
 
     @Override
@@ -69,4 +72,26 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
         }
     }
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
 }

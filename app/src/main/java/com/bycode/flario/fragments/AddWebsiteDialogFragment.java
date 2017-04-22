@@ -1,12 +1,13 @@
-package com.bycode.flarum.fragments;
+package com.bycode.flario.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,10 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.bycode.flarum.R;
-import com.bycode.flarum.listAdapters.WebsitesAdapter;
-import com.bycode.flarum.models.localDatabase.Website;
-import com.bycode.flarum.utils.URLValidator;
+import com.bycode.flario.R;
+import com.bycode.flario.models.localDatabase.Website;
+import com.bycode.flario.utils.URLValidator;
 
 /**
  * Created by michal on 22.04.2017.
@@ -25,6 +25,7 @@ import com.bycode.flarum.utils.URLValidator;
 
 public class AddWebsiteDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
     private String http = "http://";
+    private WebsitesFragment.OnFragmentInteractionListener mListener;
 
     public AddWebsiteDialogFragment() {
 
@@ -97,5 +98,28 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof WebsitesFragment.OnFragmentInteractionListener) {
+            mListener = (WebsitesFragment.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }

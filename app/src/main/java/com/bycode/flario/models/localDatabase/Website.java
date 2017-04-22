@@ -1,4 +1,4 @@
-package com.bycode.flarum.models.localDatabase;
+package com.bycode.flario.models.localDatabase;
 
 import com.orm.SugarRecord;
 

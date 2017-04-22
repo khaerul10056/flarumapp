@@ -1,10 +1,9 @@
-package com.bycode.flarum.Presenters;
+package com.bycode.flario.Presenters;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.bycode.flarum.ForumService;
-import com.bycode.flarum.models.localDatabase.Website;
+import com.bycode.flario.ForumService;
+import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
 import java.util.List;

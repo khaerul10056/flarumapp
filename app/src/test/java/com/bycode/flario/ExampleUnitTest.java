@@ -1,4 +1,4 @@
-package com.bycode.flarum;
+package com.bycode.flario;
 
 import org.junit.Test;
 

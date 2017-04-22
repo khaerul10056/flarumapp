@@ -1,9 +1,9 @@
-package com.bycode.flarum.Presenters;
+package com.bycode.flario.Presenters;
 
 import android.content.Context;
 
-import com.bycode.flarum.ForumService;
-import com.bycode.flarum.models.DiscussionsResponse;
+import com.bycode.flario.ForumService;
+import com.bycode.flario.models.DiscussionsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

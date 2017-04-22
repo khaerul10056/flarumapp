@@ -1,4 +1,4 @@
-package com.bycode.flarum.utils;
+package com.bycode.flario.utils;
 
 import java.util.Objects;
 

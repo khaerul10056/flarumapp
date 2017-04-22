@@ -1,4 +1,4 @@
-package com.bycode.flarum.models;
+package com.bycode.flario.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

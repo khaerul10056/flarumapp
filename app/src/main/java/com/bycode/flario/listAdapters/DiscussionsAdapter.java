@@ -1,14 +1,13 @@
-package com.bycode.flarum.listAdapters;
+package com.bycode.flario.listAdapters;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bycode.flarum.R;
-import com.bycode.flarum.models.DiscussionAttributes;
+import com.bycode.flario.R;
+import com.bycode.flario.models.DiscussionAttributes;
 
 import java.util.ArrayList;
 
