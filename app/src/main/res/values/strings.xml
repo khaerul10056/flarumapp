@@ -9,5 +9,5 @@
     <string name="my_forums">My forums</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
-    <string name="http_help">Full address with http:// or https://</string>
+    <string name="http_help">forum address</string>
 </resources>

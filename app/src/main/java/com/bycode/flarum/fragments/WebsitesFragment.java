@@ -68,4 +68,5 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
             adapter.addWebsite(website);
         }
     }
+
 }
