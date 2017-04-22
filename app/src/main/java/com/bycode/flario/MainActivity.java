@@ -12,15 +12,21 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.bycode.flario.fragments.AddWebsiteDialogFragment;
 import com.bycode.flario.fragments.WebsitesFragment;
+import com.bycode.flario.listAdapters.WebsitesAdapter;
+import com.bycode.flario.models.localDatabase.Website;
 
 public class MainActivity extends AppCompatActivity
         implements
             NavigationView.OnNavigationItemSelectedListener,
             WebsitesFragment.OnFragmentInteractionListener,
             AddWebsiteDialogFragment.OnFragmentInteractionListener {
+
+    private WebsitesAdapter adapter = new WebsitesAdapter();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +108,14 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
+    @Override
+    public void addWebsite(Website website) {
+        adapter.addWebsite(website);
+    }
+
+    @Override
+    public WebsitesAdapter getWebsiteAdapter() {
+        return adapter;
     }
 }

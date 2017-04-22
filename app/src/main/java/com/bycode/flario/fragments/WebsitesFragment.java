@@ -61,7 +61,7 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         items.setHasFixedSize(true);
         items.setLayoutManager(linearLayoutManager);
-        adapter = new WebsitesAdapter();
+        adapter = mListener.getWebsiteAdapter();
         items.setAdapter(adapter);
     }
 
@@ -91,7 +91,7 @@ public class WebsitesFragment extends Fragment implements WebsitesPresenter.Webs
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void addWebsite(Website website);
+        WebsitesAdapter getWebsiteAdapter();
     }
 }

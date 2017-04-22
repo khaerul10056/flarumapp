@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.bycode.flario.R;
+import com.bycode.flario.listAdapters.WebsitesAdapter;
 import com.bycode.flario.models.localDatabase.Website;
 import com.bycode.flario.utils.URLValidator;
 
@@ -70,6 +71,8 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
                         website.setAddress(full_url);
                         website.save();
 
+                        mListener.addWebsite(website);
+
 
                     }
                 })
@@ -120,6 +123,7 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void addWebsite(Website website);
+        WebsitesAdapter getWebsiteAdapter();
     }
 }
