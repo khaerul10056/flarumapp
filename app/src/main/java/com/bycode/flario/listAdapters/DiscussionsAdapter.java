@@ -28,7 +28,9 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
 
     @Override
     public void onBindViewHolder(DiscussionsAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.tv_country.setText(discussions.get(i).getTitle());
+        viewHolder.tv_discuss_title.setText(discussions.get(i).getTitle());
+        viewHolder.tv_discuss_comments.setText(discussions.get(i).getCommentsCount().toString());
+        viewHolder.tv_discuss_datetime.setText(discussions.get(i).getLastTime());
     }
 
     @Override
@@ -42,11 +44,16 @@ public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_country;
+        private TextView tv_discuss_title;
+        private TextView tv_discuss_comments;
+        private TextView tv_discuss_datetime;
+
         ViewHolder(View view) {
             super(view);
 
-            tv_country = (TextView)view.findViewById(R.id.tv_country);
+            tv_discuss_title = (TextView)view.findViewById(R.id.tv_discuss_title);
+            tv_discuss_comments = (TextView)view.findViewById(R.id.tv_discuss_comments);
+            tv_discuss_datetime = (TextView)view.findViewById(R.id.tv_discuss_datetime);
         }
     }
 }

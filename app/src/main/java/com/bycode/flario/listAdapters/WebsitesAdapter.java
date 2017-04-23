@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,13 +35,14 @@ public class WebsitesAdapter extends RecyclerView.Adapter<WebsitesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final WebsitesAdapter.ViewHolder viewHolder, final int i) {
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DiscussionsActivity.class);
                 Bundle b = new Bundle();
                 b.putString("address", websites.get(i).getAddress());
+                b.putString("title", websites.get(i).getTitle());
                 intent.putExtras(b);
                 v.getContext().startActivity(intent);
 
@@ -49,18 +51,10 @@ public class WebsitesAdapter extends RecyclerView.Adapter<WebsitesAdapter.ViewHo
 
         viewHolder.tv_website_address.setText(websites.get(i).getAddress());
         viewHolder.tv_website_title.setText(websites.get(i).getTitle());
-        viewHolder.bt_remove.setOnClickListener(new View.OnClickListener() {
-
+        viewHolder.bt_remove.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String address = websites.get(i).getAddress();
-                List<Website> websitesLocale = Website.find(Website.class, "address = ?", address);
-
-                for (Website website : websitesLocale) {
-                    Website.delete(website);
-                }
                 removeWebsite(i);
-
             }
         });
     }
@@ -75,8 +69,14 @@ public class WebsitesAdapter extends RecyclerView.Adapter<WebsitesAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    public void removeWebsite(int website_position) {
-        websites.remove(website_position);
+    private void removeWebsite(int position) {
+        String address = websites.get(position).getAddress();
+        List<Website> websitesLocale = Website.find(Website.class, "address = ?", address);
+
+        for (Website website : websitesLocale) {
+            Website.delete(website);
+        }
+        websites.remove(position);
         notifyDataSetChanged();
     }
 
@@ -88,7 +88,7 @@ public class WebsitesAdapter extends RecyclerView.Adapter<WebsitesAdapter.ViewHo
 
         ViewHolder(View view) {
             super(view);
-            tv_website_address = (TextView)view.findViewById(R.id.tv_website_addreess);
+            tv_website_address = (TextView)view.findViewById(R.id.tv_website_address);
             tv_website_title = (TextView)view.findViewById(R.id.tv_website_title);
             bt_remove = (Button)view.findViewById(R.id.bt_remove);
         }

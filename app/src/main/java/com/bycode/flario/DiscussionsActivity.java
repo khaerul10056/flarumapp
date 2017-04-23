@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.bycode.flario.Presenters.LatestDiscussionsPresenter;
 import com.bycode.flario.listAdapters.DiscussionsAdapter;
@@ -19,8 +21,10 @@ public class DiscussionsActivity extends AppCompatActivity implements LatestDisc
         setContentView(R.layout.activity_discussions);
 
         Bundle b = getIntent().getExtras();
+        String title = b.getString("title");
         String address = b.getString("address");
-        setTitle(address);
+
+        setTitle(title);
         initRecyclerView();
 
         LatestDiscussionsPresenter latestDiscussionsPresenter = new LatestDiscussionsPresenter(this, this);
@@ -30,6 +34,9 @@ public class DiscussionsActivity extends AppCompatActivity implements LatestDisc
 
     @Override
     public void latestDiscussionsReady(DiscussionsResponse discussionsResponse) {
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.pb_discussions);
+        progressBar.setVisibility(View.GONE);
+
         for (Discussion discussion : discussionsResponse.getData()) {
             adapter.addDiscussion(discussion.getDiscussionAttributes());
         }

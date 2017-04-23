@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bycode.flario.Presenters.WebsiteInfoPresenter;
 import com.bycode.flario.Presenters.WebsitesPresenter;
@@ -141,7 +142,9 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
         website.save();
 
         mListener.addWebsite(website);
+        mListener.showToast(R.string.added, Toast.LENGTH_SHORT);
 
+        mListener = null;
 
     }
 
@@ -156,5 +159,6 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
     public interface OnFragmentInteractionListener {
         void addWebsite(Website website);
         void sendModal(int title_id, int text_id);
+        void showToast(int text_id, int length);
     }
 }

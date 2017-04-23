@@ -23,7 +23,7 @@ import com.bycode.flario.listAdapters.WebsitesAdapter;
 import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class WebsitesFragment extends Fragment {
@@ -51,7 +51,6 @@ public class WebsitesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_websites, container, false);
     }
 
@@ -64,6 +63,7 @@ public class WebsitesFragment extends Fragment {
         adapter = mListener.getWebsiteAdapter();
         items.setAdapter(adapter);
     }
+
 
 
     @Override

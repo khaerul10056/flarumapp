@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
             NavigationView.OnNavigationItemSelectedListener,
             WebsitesFragment.OnFragmentInteractionListener,
             AddWebsiteDialogFragment.OnFragmentInteractionListener,
-        WebsitesPresenter.WebsitesPresenterListener{
+            WebsitesPresenter.WebsitesPresenterListener {
 
     private WebsitesAdapter adapter = new WebsitesAdapter();
 
@@ -134,6 +134,11 @@ public class MainActivity extends AppCompatActivity
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+    @Override
+    public void showToast(int text_id, int length) {
+        Toast.makeText(this, getResources().getText(text_id), length).show();
     }
 
 
