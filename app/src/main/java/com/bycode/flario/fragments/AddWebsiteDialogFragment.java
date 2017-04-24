@@ -139,6 +139,10 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
         Website website = new Website();
         website.setAddress(fullUrl);
         website.setTitle(websiteInfoAttributes.getTitle());
+        website.setLogged(false);
+        website.setWelcomeTitle(websiteInfoAttributes.getWelcomeTitle());
+        website.setWelcomeMessage(websiteInfoAttributes.getWelcomeMessage());
+        website.setShowWelcomeMessage(false);
         website.save();
 
         mListener.addWebsite(website);
