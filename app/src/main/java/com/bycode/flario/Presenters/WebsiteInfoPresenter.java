@@ -1,16 +1,9 @@
 package com.bycode.flario.Presenters;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.bycode.flario.ForumService;
-import com.bycode.flario.models.DiscussionsResponse;
-import com.bycode.flario.models.WebsiteInfo;
 import com.bycode.flario.models.WebsiteInfoResponse;
-import com.bycode.flario.models.localDatabase.Website;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

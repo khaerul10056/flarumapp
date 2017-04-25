@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.bycode.flario.WebsiteActivity;
 import com.bycode.flario.R;
+import com.bycode.flario.WebsiteActivity;
 import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
