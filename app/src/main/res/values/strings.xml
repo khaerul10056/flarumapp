@@ -19,4 +19,8 @@
     <string name="website_not_exists">Website based on flarum propably doesn\'t exists :/</string>
     <string name="added">Added</string>
     <string name="notifications">Notifications</string>
+    <string name="following">Following</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

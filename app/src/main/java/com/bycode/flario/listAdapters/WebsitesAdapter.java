@@ -1,20 +1,17 @@
 package com.bycode.flario.listAdapters;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.bycode.flario.DiscussionsActivity;
+import com.bycode.flario.WebsiteActivity;
 import com.bycode.flario.R;
-import com.bycode.flario.fragments.WebsitesFragment;
 import com.bycode.flario.models.localDatabase.Website;
 
 import java.util.ArrayList;
@@ -41,7 +38,7 @@ public class WebsitesAdapter extends RecyclerView.Adapter<WebsitesAdapter.ViewHo
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DiscussionsActivity.class);
+                Intent intent = new Intent(v.getContext(), WebsiteActivity.class);
                 Bundle b = new Bundle();
                 b.putString("address", websites.get(i).getAddress());
                 b.putString("title", websites.get(i).getTitle());

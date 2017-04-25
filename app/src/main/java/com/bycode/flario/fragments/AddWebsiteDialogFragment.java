@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
     private String http = "http://";
     private AddWebsiteDialogFragment.OnFragmentInteractionListener mListener;
     private String fullUrl;
+    private ProgressBar progressBar;
 
     public AddWebsiteDialogFragment() {
 
@@ -57,7 +59,8 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
 
         final WebsiteInfoPresenter websiteInfoPresenter = new WebsiteInfoPresenter(this, getActivity());
 
-        // Get the layout inflater
+        progressBar = (ProgressBar) getActivity().findViewById(R.id.pb_websites);
+
         Spinner spinner = (Spinner) view.findViewById(R.id.http_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.http_array, android.R.layout.simple_spinner_item);
@@ -65,13 +68,13 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
+
         builder.setView(view)
-                // Add action buttons
                 .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        progressBar.setVisibility(View.VISIBLE);
+
                         EditText address = (EditText) getDialog().findViewById(R.id.address_url);
                         String full_url = http+address.getText().toString();
 
@@ -144,6 +147,8 @@ public class AddWebsiteDialogFragment extends DialogFragment implements AdapterV
         website.setWelcomeMessage(websiteInfoAttributes.getWelcomeMessage());
         website.setShowWelcomeMessage(false);
         website.save();
+
+        progressBar.setVisibility(View.INVISIBLE);
 
         mListener.addWebsite(website);
         mListener.showToast(R.string.added, Toast.LENGTH_SHORT);

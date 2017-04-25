@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.bycode.flario.DiscussionsActivity" android:parentActivityName=".MainActivity" />
+        <activity android:name="com.bycode.flario.WebsiteActivity" android:parentActivityName=".MainActivity" />
 
         <meta-data android:name="DATABASE" android:value="flario.db" />
         <meta-data android:name="VERSION" android:value="1" />

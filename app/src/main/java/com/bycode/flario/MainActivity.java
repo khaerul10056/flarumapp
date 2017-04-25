@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.bycode.flario.Presenters.WebsitesPresenter;
 import com.bycode.flario.fragments.AddWebsiteDialogFragment;
+import com.bycode.flario.fragments.FollowingFragment;
 import com.bycode.flario.fragments.WebsitesFragment;
 import com.bycode.flario.listAdapters.WebsitesAdapter;
 import com.bycode.flario.models.localDatabase.Website;
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.websites:
                 fragmentClass = WebsitesFragment.class;
+                break;
+            case R.id.following:
+                fragmentClass = FollowingFragment.class;
                 break;
             default:
                 break;
