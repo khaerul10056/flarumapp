@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.bycode.flario.Presenters.WebsiteInfoPresenter;
 import com.bycode.flario.R;
-import com.bycode.flario.fragments.website.WebsitesFragment;
 import com.bycode.flario.models.WebsiteInfo;
 import com.bycode.flario.models.WebsiteInfoAttributes;
 import com.bycode.flario.models.WebsiteInfoResponse;

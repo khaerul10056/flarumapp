@@ -64,6 +64,8 @@ public class DiscussionAttributes {
     @Expose
     private Boolean canTag;
 
+    private Integer id;
+
     public String getTitle() {
         return title;
     }
@@ -208,4 +210,11 @@ public class DiscussionAttributes {
         this.canTag = canTag;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

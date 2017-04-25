@@ -37,9 +37,7 @@ public class DiscussionsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mListener.getWebsite().getLogged()) {
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    CreateDiscussionFragment createDiscussionFragment = new CreateDiscussionFragment();
-                    ft.replace(R.id.relativelayout_for_fragment, createDiscussionFragment);
+
                 } else {
                     mListener.showToast(R.string.not_logged, Toast.LENGTH_SHORT);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
