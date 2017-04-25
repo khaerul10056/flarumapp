@@ -1,15 +1,13 @@
 package com.bycode.flario;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bycode.flario.Presenters.LatestDiscussionsPresenter;
-import com.bycode.flario.fragments.DiscussionsFragment;
+import com.bycode.flario.fragments.website.DiscussionsFragment;
 import com.bycode.flario.listAdapters.DiscussionsAdapter;
 import com.bycode.flario.models.Discussion;
 import com.bycode.flario.models.DiscussionsResponse;
@@ -63,7 +61,6 @@ public class WebsiteActivity extends AppCompatActivity implements
     }
 
 
-
     @Override
     public Website getWebsite() {
         return website;
@@ -72,5 +69,10 @@ public class WebsiteActivity extends AppCompatActivity implements
     @Override
     public DiscussionsAdapter getDiscussionsAdapter() {
         return discussionsAdapter;
+    }
+
+    @Override
+    public void showToast(int text_id, int length) {
+        Toast.makeText(this, getResources().getText(text_id), length).show();
     }
 }

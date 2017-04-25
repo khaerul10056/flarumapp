@@ -1,14 +1,17 @@
-package com.bycode.flario.fragments;
+package com.bycode.flario.fragments.website;
 
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bycode.flario.R;
 import com.bycode.flario.listAdapters.DiscussionsAdapter;
@@ -28,6 +31,25 @@ public class DiscussionsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_discussions, container, false);
         initRecyclerView(v);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) v.findViewById(R.id.add_discussion_fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener.getWebsite().getLogged()) {
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    CreateDiscussionFragment createDiscussionFragment = new CreateDiscussionFragment();
+                    ft.replace(R.id.relativelayout_for_fragment, createDiscussionFragment);
+                } else {
+                    mListener.showToast(R.string.not_logged, Toast.LENGTH_SHORT);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    LoginWebsiteDialogFragment addWebsiteDialogFragment = LoginWebsiteDialogFragment.newInstance();
+                    addWebsiteDialogFragment.show(ft, "TEST");
+                }
+
+            }
+        });
+
         return v;
     }
 
@@ -61,5 +83,6 @@ public class DiscussionsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         Website getWebsite();
         DiscussionsAdapter getDiscussionsAdapter();
+        void showToast(int text_id, int length);
     }
 }

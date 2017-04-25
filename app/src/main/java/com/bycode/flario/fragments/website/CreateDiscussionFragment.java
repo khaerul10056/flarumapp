@@ -1,4 +1,4 @@
-package com.bycode.flario.fragments;
+package com.bycode.flario.fragments.website;
 
 
 import android.os.Bundle;
@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 
 import com.bycode.flario.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FollowingFragment extends Fragment {
+public class CreateDiscussionFragment extends Fragment {
 
 
-    public FollowingFragment() {
+    public CreateDiscussionFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +24,7 @@ public class FollowingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_following, container, false);
+        return inflater.inflate(R.layout.fragment_create_discussion, container, false);
     }
 
 }

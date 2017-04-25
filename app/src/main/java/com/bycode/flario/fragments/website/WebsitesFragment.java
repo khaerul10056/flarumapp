@@ -1,4 +1,4 @@
-package com.bycode.flario.fragments;
+package com.bycode.flario.fragments.website;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bycode.flario.R;
+import com.bycode.flario.fragments.main.AddWebsiteDialogFragment;
 import com.bycode.flario.listAdapters.WebsitesAdapter;
 
 

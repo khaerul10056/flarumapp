@@ -1,10 +1,9 @@
-package com.bycode.flario.fragments;
+package com.bycode.flario.fragments.main;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -18,9 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bycode.flario.Presenters.WebsiteInfoPresenter;
-import com.bycode.flario.Presenters.WebsitesPresenter;
 import com.bycode.flario.R;
-import com.bycode.flario.listAdapters.WebsitesAdapter;
+import com.bycode.flario.fragments.website.WebsitesFragment;
 import com.bycode.flario.models.WebsiteInfo;
 import com.bycode.flario.models.WebsiteInfoAttributes;
 import com.bycode.flario.models.WebsiteInfoResponse;
